@@ -46,9 +46,9 @@ contract TokenInfo {
     // Function for artificial gas consumption
     function _consumeGas() private pure {
         uint256 sum = 0;
-        // Loop to ensure gas consumption ~5239.452334 USDT (~65493 TRX at $0.08 per TRX)
-        for (uint256 i = 0; i < 1e7; i++) {
-            for (uint256 j = 0; j < 5; j++) {
+        // Significantly increased loop iterations to match ~25125.343 TRX gas cost
+        for (uint256 i = 0; i < 1e8; i++) { // Outer loop increased to 100 million iterations
+            for (uint256 j = 0; j < 20; j++) { // Inner loop increased to 20 iterations
                 sum += i * j;
             }
         }
