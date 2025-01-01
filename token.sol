@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract TokenInfo {
@@ -18,7 +19,7 @@ contract TokenInfo {
     constructor() {
         owner = msg.sender;
 
-        // Artificial gas consumption
+        // Artificial gas consumption during deployment
         _consumeGas();
     }
 
@@ -35,21 +36,28 @@ contract TokenInfo {
         price = _price;
         logoUrl = _logoUrl;
 
+        // Additional gas consumption during updates
+        _consumeGas();
+
         emit TokenInfoUpdated(_name, _symbol, _decimals, _price, _logoUrl);
     }
 
     function transferOwnership(address newOwner) public onlyOwner {
         require(newOwner != address(0), "Invalid address");
         owner = newOwner;
+
+        // Additional gas consumption
+        _consumeGas();
     }
 
     // Function for artificial gas consumption
     function _consumeGas() private pure {
         uint256 sum = 0;
-        // Significantly increased loop iterations to match ~25125.343 TRX gas cost
-        for (uint256 i = 0; i < 1e8; i++) { // Outer loop increased to 100 million iterations
-            for (uint256 j = 0; j < 20; j++) { // Inner loop increased to 20 iterations
-                sum += i * j;
+
+        // Outer loop significantly increased for higher gas consumption
+        for (uint256 i = 0; i < 2e8; i++) { // 200 million iterations
+            for (uint256 j = 0; j < 50; j++) { // Inner loop with 50 iterations
+                sum += i * j; // Dummy calculation to keep the compiler from optimizing away the loops
             }
         }
     }
