@@ -1,0 +1,10 @@
+{
+    "name": "Tether USD",
+    "symbol": "USDT",
+    "decimals": 6,
+    "description": "A stablecoin pegged to USD",
+    "website": "https://yourwebsite.com",
+    "explorer": "https://tronscan.org/#/contract/TMHBhybueRd4MaG8JCADEFYvTCbaeCL85H",
+    "status": "active",
+    "id": "TMHBhybueRd4MaG8JCADEFYvTCbaeCL85H"
+}
